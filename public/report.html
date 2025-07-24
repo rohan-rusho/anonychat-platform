@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Abuse - AnonyChat</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">💬</span>
+                <h1>AnonyChat</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">← Back to Chat</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <div class="content-wrapper">
+                <div class="report-header">
+                    <h2>🚨 Report Abuse or Inappropriate Behavior</h2>
+                    <p>Help us maintain a safe and respectful community. Your reports are anonymous and help us improve the platform for everyone.</p>
+                </div>
+
+                <div class="report-form-container">
+                    <form id="reportForm" class="report-form">
+                        <div class="form-section">
+                            <h3>Type of Issue</h3>
+                            <div class="issue-types">
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="harassment" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">😠</span>
+                                        <span class="issue-name">Harassment or Bullying</span>
+                                        <span class="issue-desc">Threatening, intimidating, or abusive behavior</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="nudity" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">🚫</span>
+                                        <span class="issue-name">Inappropriate Content</span>
+                                        <span class="issue-desc">Nudity, sexual content, or explicit material</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="spam" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">📢</span>
+                                        <span class="issue-name">Spam or Scam</span>
+                                        <span class="issue-desc">Unwanted promotional content or fraudulent activity</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="underage" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">👶</span>
+                                        <span class="issue-name">Underage User</span>
+                                        <span class="issue-desc">User appears to be under 18 years old</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="hate" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">💢</span>
+                                        <span class="issue-name">Hate Speech</span>
+                                        <span class="issue-desc">Discriminatory language or content</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="illegal" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">⚖️</span>
+                                        <span class="issue-name">Illegal Activity</span>
+                                        <span class="issue-desc">Content or behavior that violates laws</span>
+                                    </div>
+                                </label>
+
+                                <label class="issue-option">
+                                    <input type="radio" name="issueType" value="other" required>
+                                    <div class="issue-card">
+                                        <span class="issue-icon">❓</span>
+                                        <span class="issue-name">Other</span>
+                                        <span class="issue-desc">Something else that violates our terms</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Additional Details</h3>
+                            <div class="form-group">
+                                <label for="reportDescription">Description of the incident:</label>
+                                <textarea id="reportDescription" 
+                                         name="description" 
+                                         placeholder="Please provide as much detail as possible about what happened. This helps us take appropriate action."
+                                         maxlength="1000"
+                                         rows="5"></textarea>
+                                <small class="char-counter">0/1000 characters</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sessionId">Session ID (if available):</label>
+                                <input type="text" 
+                                       id="sessionId" 
+                                       name="sessionId" 
+                                       placeholder="Auto-filled if reported during chat"
+                                       readonly>
+                                <small>This helps us identify the specific chat session</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timestamp">When did this occur?</label>
+                                <input type="datetime-local" 
+                                       id="timestamp" 
+                                       name="timestamp">
+                                <small>Help us find the relevant time period</small>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Contact Information (Optional)</h3>
+                            <p class="contact-info">
+                                While we keep all reports anonymous, you can optionally provide contact information if you'd like us to follow up with you about this report.
+                            </p>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Email address (optional):</label>
+                                <input type="email" 
+                                       id="contactEmail" 
+                                       name="contactEmail" 
+                                       placeholder="your.email@example.com">
+                                <small>We'll only use this to update you about your report</small>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="secondary-btn" onclick="history.back()">Cancel</button>
+                            <button type="submit" class="danger-btn">Submit Report</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="emergency-info">
+                    <h3>🚨 Emergency Situations</h3>
+                    <div class="emergency-box">
+                        <p><strong>If you are in immediate danger or have encountered illegal content involving minors:</strong></p>
+                        <ul>
+                            <li>Contact local emergency services immediately (911 in US)</li>
+                            <li>Report to the National Center for Missing & Exploited Children: <a href="https://www.missingkids.org/gethelpnow/cybertipline" target="_blank" rel="noopener">CyberTipline</a></li>
+                            <li>Report to FBI's Internet Crime Complaint Center: <a href="https://www.ic3.gov" target="_blank" rel="noopener">IC3.gov</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="report-info">
+                    <h3>What Happens After You Report?</h3>
+                    <div class="process-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Report Received</h4>
+                                <p>Your report is immediately logged and reviewed by our moderation team.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Investigation</h4>
+                                <p>We investigate the report and may take immediate action if necessary.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Action Taken</h4>
+                                <p>Appropriate measures are taken, which may include warnings, temporary bans, or permanent bans.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Follow-up</h4>
+                                <p>If you provided contact information, we may update you on the outcome.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 AnonyChat. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">✅</div>
+            <h3>Report Submitted Successfully</h3>
+            <p>Thank you for helping us maintain a safe community. Your report has been received and will be reviewed by our moderation team.</p>
+            <div class="modal-actions">
+                <button class="primary-btn" onclick="window.location.href='index.html'">Return to Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/report.js"></script>
+</body>
+</html>

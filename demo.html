@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnonyChat - Demo Version</title>
+    <style>
+        /* Inline CSS for standalone demo */
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-primary: #4f46e5;
+            --accent-light: #6366f1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border-color: #404040;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .demo-section {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-light));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .demo-box {
+            background-color: var(--bg-secondary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .setup-steps {
+            text-align: left;
+            background-color: var(--bg-tertiary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .setup-steps h3 {
+            color: var(--accent-light);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .setup-steps ol {
+            padding-left: var(--spacing-lg);
+        }
+
+        .setup-steps li {
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-secondary);
+        }
+
+        .setup-steps code {
+            background-color: var(--bg-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--accent-light);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-light));
+            color: white;
+            font-size: 1.25rem;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .secondary-btn {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            margin: 0 var(--spacing-sm);
+        }
+
+        .secondary-btn:hover {
+            background-color: var(--bg-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .feature-card {
+            background-color: var(--bg-tertiary);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .warning-box {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--warning);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .warning-box h4 {
+            color: var(--warning);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">💬</span>
+                <h1>AnonyChat</h1>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="demo-section">
+                <h2 class="hero-title">AnonyChat Platform</h2>
+                <p class="hero-subtitle">
+                    Live audio/video chat platform with local device storage only - no data collection
+                </p>
+                
+                <div class="demo-box">
+                    <h3>🎤 Live Audio Chat Ready!</h3>
+                    <p>Your anonymous live audio/video chat platform focuses on real-time streaming with complete privacy - all data stays on your device.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎤</div>
+                            <div class="feature-title">Live Audio</div>
+                            <div class="feature-desc">Real-time microphone streaming - no recording</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎥</div>
+                            <div class="feature-title">Live Video</div>
+                            <div class="feature-desc">WebRTC peer-to-peer live streaming</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🔄</div>
+                            <div class="feature-title">Random Matching</div>
+                            <div class="feature-desc">Smart user pairing system</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">�</div>
+                            <div class="feature-title">Local Storage Only</div>
+                            <div class="feature-desc">All data stored on your device only</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-title">Interest Matching</div>
+                            <div class="feature-desc">Connect with similar interests</div>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-title">Responsive Design</div>
+                            <div class="feature-desc">Works on all devices</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="setup-steps">
+                    <h3>🔧 Setup Instructions</h3>
+                    <ol>
+                        <li>Install <strong>Node.js</strong> from <a href="https://nodejs.org" target="_blank" style="color: var(--accent-light);">nodejs.org</a></li>
+                        <li>Open terminal in project folder</li>
+                        <li>Run: <code>npm install</code></li>
+                        <li>Run: <code>npm start</code></li>
+                        <li>Visit: <code>http://localhost:3000</code></li>
+                    </ol>
+                </div>
+
+                <div class="warning-box">
+                    <h4>🔒 Privacy First - Local Storage Only</h4>
+                    <p>This platform prioritizes your privacy:</p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>🎤 <strong>Live Audio/Video</strong> - No recording or storage</li>
+                        <li>📱 <strong>Device Storage Only</strong> - All preferences stored locally</li>
+                        <li>🚫 <strong>No Data Collection</strong> - Server only facilitates connections</li>
+                        <li>🔄 <strong>Real-time Streaming</strong> - Direct peer-to-peer communication</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <h4>⚠️ Node.js Required</h4>
+                    <p>This is a demo page. To run the full chat platform, you need to install Node.js and start the server. See the SETUP.md file for detailed instructions.</p>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <a href="https://nodejs.org" target="_blank" class="primary-btn">
+                        <span>📦</span> Download Node.js
+                    </a>
+                    <a href="SETUP.md" class="secondary-btn">
+                        <span>📖</span> Setup Guide
+                    </a>
+                    <a href="README.md" class="secondary-btn">
+                        <span>📋</span> Full Documentation
+                    </a>
+                </div>
+
+                <div style="margin-top: 2rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md);">
+                    <h4>📁 Project Structure Created:</h4>
+                    <div style="text-align: left; font-family: monospace; font-size: 0.875rem; color: var(--text-secondary); margin-top: 1rem;">
+                        <div>📄 index.html - Homepage</div>
+                        <div>📄 chat.html - Chat interface</div>
+                        <div>📄 terms.html - Terms & Privacy</div>
+                        <div>📄 report.html - Report abuse</div>
+                        <div>📁 scripts/ - JavaScript functionality</div>
+                        <div>📁 assets/ - CSS styles</div>
+                        <div>📁 server/ - Node.js backend</div>
+                        <div>📄 package.json - Dependencies</div>
+                        <div>📄 README.md - Documentation</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 AnonyChat Platform. Built with Node.js, Socket.IO, and WebRTC.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some interactive elements
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Show a welcome message
+            setTimeout(() => {
+                console.log('🎉 AnonyChat platform is ready!');
+                console.log('📋 Next steps:');
+                console.log('1. Install Node.js from https://nodejs.org');
+                console.log('2. Run: npm install');
+                console.log('3. Run: npm start');
+                console.log('4. Visit: http://localhost:3000');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

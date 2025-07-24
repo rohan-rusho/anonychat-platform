@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Chat - Connect with Strangers</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💬</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">💬</span>
+                <h1>AnonyChat</h1>
+            </div>
+            <nav class="nav">
+                <a href="terms.html" class="nav-link">Terms & Privacy</a>
+            </nav>
+        </header>
+
+        <main class="main">
+            <div class="hero-section">
+                <h2 class="hero-title">Connect with Strangers Anonymously</h2>
+                <p class="hero-subtitle">
+                    Start a conversation with someone new. Text or video chat with people from around the world.
+                </p>
+                
+                <div class="chat-options">
+                    <h3>Choose Your Chat Mode</h3>
+                    
+                    <div class="mode-selection">
+                        <label class="mode-option">
+                            <input type="radio" name="chatMode" value="text" checked>
+                            <div class="mode-card">
+                                <span class="mode-icon">💬</span>
+                                <span class="mode-name">Text Chat</span>
+                                <span class="mode-desc">Anonymous messaging</span>
+                            </div>
+                        </label>
+                        
+                        <label class="mode-option">
+                            <input type="radio" name="chatMode" value="audio">
+                            <div class="mode-card">
+                                <span class="mode-icon">🎤</span>
+                                <span class="mode-name">Audio Chat</span>
+                                <span class="mode-desc">Live voice conversation</span>
+                            </div>
+                        </label>
+                        
+                        <label class="mode-option">
+                            <input type="radio" name="chatMode" value="video">
+                            <div class="mode-card">
+                                <span class="mode-icon">🎥</span>
+                                <span class="mode-name">Video Chat</span>
+                                <span class="mode-desc">Face-to-face conversation</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="interests-section">
+                        <h4>Add Interests (Optional)</h4>
+                        <input type="text" 
+                               id="interests" 
+                               placeholder="e.g., gaming, music, programming" 
+                               class="interests-input">
+                        <small>Separate interests with commas to match with similar people</small>
+                    </div>
+
+                    <button class="start-chat-btn" id="startChatBtn">
+                        <span class="btn-icon">🚀</span>
+                        Start Chatting
+                    </button>
+                </div>
+
+                <div class="safety-notice">
+                    <h4>🔒 Privacy & Safety First</h4>
+                    <ul>
+                        <li>🎤 Live audio/video only - no recording or storage</li>
+                        <li>📱 All data stored on your device only</li>
+                        <li>🛡️ Report inappropriate behavior immediately</li>
+                        <li>⚠️ Do not share personal information</li>
+                        <li>🚫 No screenshots or recordings allowed</li>
+                        <li>🔄 Real-time streaming - server only facilitates connections</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 AnonyChat. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="terms.html">Terms of Service</a>
+                <a href="terms.html#privacy">Privacy Policy</a>
+                <a href="report.html">Report Abuse</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <h3>Looking for someone to chat with...</h3>
+            <p>This may take a few moments</p>
+            <button class="cancel-btn" id="cancelSearch">Cancel</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
